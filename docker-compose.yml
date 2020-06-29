@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+  example:
+    build: example/
+
+  micro:
+    image: micro/micro
+    command: server
+    depends_on:
+      - example
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
