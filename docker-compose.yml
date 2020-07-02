@@ -7,8 +7,6 @@ networks:
 services:
   example:
     build: example/
-    networks:
-      - test-network
 
   micro:
     image: micro/micro
@@ -19,5 +17,3 @@ services:
       - "8080:8080"
       - "8081:8081"
       - "8082:8082"
-    networks:
-      - test-network
