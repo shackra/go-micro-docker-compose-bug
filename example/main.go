@@ -1,10 +1,12 @@
 package main
 
 import (
-	log "github.com/micro/go-micro/v2/logger"
-	"github.com/micro/go-micro/v2"
 	"example/handler"
 	"example/subscriber"
+	"time"
+
+	"github.com/micro/go-micro/v2"
+	log "github.com/micro/go-micro/v2/logger"
 
 	example "example/proto/example"
 )
@@ -14,6 +16,8 @@ func main() {
 	service := micro.NewService(
 		micro.Name("go.micro.service.example"),
 		micro.Version("latest"),
+		micro.RegisterTTL(time.Duration(30)*time.Second),
+		micro.RegisterInterval(time.Duration(5)*time.Minute),
 	)
 
 	// Initialise service
